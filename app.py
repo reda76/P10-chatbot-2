@@ -16,15 +16,14 @@ from botbuilder.core import (
     BotFrameworkAdapterSettings,
     ConversationState,
     MemoryStorage,
-    UserState,
-    TelemetryLoggerMiddleware,
+    UserState
 )
 from botbuilder.core.integration import aiohttp_error_middleware
 from botbuilder.schema import Activity
 from botbuilder.applicationinsights import ApplicationInsightsTelemetryClient
 from botbuilder.integration.applicationinsights.aiohttp import (
     AiohttpTelemetryProcessor,
-    bot_telemetry_middleware,
+    bot_telemetry_middleware
 )
 
 from config import DefaultConfig
@@ -58,9 +57,6 @@ TELEMETRY_CLIENT = ApplicationInsightsTelemetryClient(
     INSTRUMENTATION_KEY, telemetry_processor=AiohttpTelemetryProcessor(), client_queue_size=10
 )
 
-# Code for enabling activity and personal information logging.
-# TELEMETRY_LOGGER_MIDDLEWARE = TelemetryLoggerMiddleware(telemetry_client=TELEMETRY_CLIENT, log_personal_information=True)
-# ADAPTER.use(TELEMETRY_LOGGER_MIDDLEWARE)
 
 # Create dialogs and Bot
 RECOGNIZER = FlightBookingRecognizer(CONFIG)
